@@ -137,47 +137,24 @@
 
   /* MOCKUP */
   .mockup-frame {
-    margin: 0 auto 20px;
+    position: relative;
     width: 100%;
-    max-width: 520px;
-    background: #0f0f0f;
-    border-radius: 18px;
-    aspect-ratio: 16/10;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 18px 40px -16px rgba(0,0,0,0.25);
+    max-width: 500px;
+    margin: 32px auto 26px;
+    border-radius: 20px;
+    overflow: visible;
   }
-  .mockup-frame::before {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 30% 30%, rgba(34,197,94,0.18) 0%, transparent 55%),
-      radial-gradient(circle at 70% 70%, rgba(212,160,23,0.12) 0%, transparent 55%),
-      linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  .hero-mockup {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));
+    animation: float 4s ease-in-out infinite;
   }
-  .mockup-frame .mockup-grid {
-    position: absolute; inset: 14px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 8px;
-    z-index: 1;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
-  .mockup-frame .tile {
-    border-radius: 8px;
-    background: linear-gradient(135deg, #2a2a2a 0%, #0f0f0f 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .mockup-frame .tile::after {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4)),
-      repeating-linear-gradient(45deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 4px);
-  }
-  .mockup-frame .tile.t2 { background: linear-gradient(135deg, #3a2418 0%, #1a0e08 100%); }
-  .mockup-frame .tile.t3 { background: linear-gradient(135deg, #2a2a2a 0%, #1a3a24 100%); }
   .mockup-frame .play-pill {
     position: absolute;
     bottom: 14px; left: 14px;
@@ -554,66 +531,40 @@
     color: var(--ink);
     margin-bottom: 22px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 4px;
   }
   .bonus-title .gift { font-size: 22px; }
   .bonus-stack { display: flex; flex-direction: column; gap: 16px; }
   .bonus-card {
     background: var(--bg);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 24px;
     overflow: hidden;
     text-align: center;
     transition: transform 0.22s ease, box-shadow 0.22s ease;
+    max-width: 440px;
+    margin: 0 auto;
   }
   .bonus-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 16px 34px -18px rgba(0,0,0,0.18);
   }
   .bonus-thumb {
-    aspect-ratio: 16/10;
+    width: 100%;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--g1, #fdf6e3) 0%, var(--g2, #f3edff) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
+    background: #f8f9fa;
   }
-  .bonus-thumb::before {
-    content: "";
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.6) 0%, transparent 45%),
-      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.5) 0%, transparent 50%);
+  .bonus-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
   }
-  .bonus-thumb-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 0 18px;
-  }
-  .bonus-thumb .big-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 900;
-    font-size: 30px;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--lc, var(--purple-deep));
-    text-shadow: 2px 2px 0 rgba(255,255,255,0.7);
-  }
-  .bonus-thumb .sub-label {
-    margin-top: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ink);
-    opacity: 0.7;
-  }
+  .bonus-card:hover .bonus-img { transform: scale(1.05); }
   .bonus-thumb .free-stamp {
     position: absolute;
     top: 12px; right: 12px;
@@ -1136,6 +1087,124 @@
     .notif { left: 14px; bottom: 14px; max-width: calc(100vw - 28px); }
   }
 
+  /* === UPSELL MODAL === */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 24px;
+    padding: 32px 24px;
+    position: relative;
+    animation: modalPop 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.28);
+    text-align: center;
+  }
+  @keyframes modalPop {
+    from { opacity: 0; transform: scale(0.8) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+  }
+  .modal-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .modal-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .modal-price-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+  .modal-price-old {
+    color: var(--red);
+    text-decoration: line-through;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .modal-price-new {
+    color: var(--green);
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .modal-list {
+    text-align: left;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .modal-item .check {
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .modal-btn-upsell {
+    display: block;
+    width: 100%;
+    background: var(--green-deep);
+    color: #fff;
+    padding: 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 20px rgba(22,163,74,0.3);
+    transition: transform 0.2s;
+  }
+  .modal-btn-upsell:hover { transform: translateY(-2px); }
+  .modal-btn-basic {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    color: var(--ink);
+    padding: 16px;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .modal-btn-basic:hover { background: #fafafa; }
+
   /* === DESKTOP === */
   @media (min-width: 720px) {
     body { font-size: 16px; }
@@ -1163,21 +1232,7 @@
     <p class="hero-sub reveal delay-1">Tenha acesso imediato ao maior acervo de cortes do Brasil — prontos para mostrar no celular, elevar o nível do seu atendimento e lucrar mais hoje mesmo.</p>
 
     <div class="mockup-frame reveal delay-2">
-      <span class="badge-top">+1200 Cortes</span>
-      <div class="mockup-grid">
-        <div class="tile t1"></div>
-        <div class="tile t2"></div>
-        <div class="tile t3"></div>
-        <div class="tile t1"></div>
-        <div class="tile t2"></div>
-        <div class="tile t1"></div>
-        <div class="tile t3"></div>
-        <div class="tile t2"></div>
-      </div>
-      <span class="play-pill">
-        <svg class="icon" viewBox="0 0 24 24" style="width:11px;height:11px;fill:#fff;stroke:#fff"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Ver demonstração
-      </span>
+      <img src="mockup.png" alt="Barber Blackbook Mockup" class="hero-mockup">
     </div>
 
     <div class="social-proof reveal delay-2">
@@ -1405,54 +1460,42 @@
   <div class="container">
     <div class="bonus-wrap reveal">
       <div class="bonus-title">
-        <span class="gift">🎁</span>
-        Você recebe +4 Bônus Exclusivos <span style="color:var(--green-deep);">(Grátis)</span>
+        <div><span class="gift">🎁</span> Você recebe +4 Bônus Exclusivos</div>
+        <div style="color:var(--green-deep);">(Grátis)</div>
       </div>
 
       <div class="bonus-stack">
         <div class="bonus-card">
-          <div class="bonus-thumb" style="--g1:#fde2e4;--g2:#f3edff;--lc:var(--purple-deep);">
+          <div class="bonus-thumb">
             <span class="free-stamp">Grátis</span>
-            <div class="bonus-thumb-content">
-              <div class="big-label">Cortes em Alta</div>
-              <div class="sub-label">25 estilos · 2026</div>
-            </div>
+            <img src="bonus1.png" alt="Cortes mais pedidos" class="bonus-img">
           </div>
           <h4>Bônus 1: Cortes mais pedidos</h4>
           <p>Os 25 estilos que mais estão saindo em 2026 com dicas de execução.</p>
         </div>
 
         <div class="bonus-card">
-          <div class="bonus-thumb" style="--g1:#fef3c7;--g2:#fde68a;--lc:#b45309;">
+          <div class="bonus-thumb">
             <span class="free-stamp">Grátis</span>
-            <div class="bonus-thumb-content">
-              <div class="big-label">Instagram Pack</div>
-              <div class="sub-label">fotos · stories · reels</div>
-            </div>
+            <img src="bonus2.png" alt="Instagram Pack" class="bonus-img">
           </div>
           <h4>Bônus 2: Ideias de fotos pra Instagram</h4>
           <p>Como fotografar e postar seus cortes pra bombar no perfil.</p>
         </div>
 
         <div class="bonus-card">
-          <div class="bonus-thumb" style="--g1:#dbeafe;--g2:#e9faf0;--lc:#1d4ed8;">
+          <div class="bonus-thumb">
             <span class="free-stamp">Grátis</span>
-            <div class="bonus-thumb-content">
-              <div class="big-label">Guia de Rostos</div>
-              <div class="sub-label">corte ideal por formato</div>
-            </div>
+            <img src="bonus3.png" alt="Guia de Rostos" class="bonus-img">
           </div>
           <h4>Bônus 3: Guia por formato de rosto</h4>
           <p>Saiba qual corte indicar pra cada tipo de rosto. Atendimento de profissional.</p>
         </div>
 
         <div class="bonus-card">
-          <div class="bonus-thumb" style="--g1:#fce7f3;--g2:#fef3c7;--lc:#be185d;">
+          <div class="bonus-thumb">
             <span class="free-stamp">Grátis</span>
-            <div class="bonus-thumb-content">
-              <div class="big-label">100 Legendas</div>
-              <div class="sub-label">pronto pra copiar</div>
-            </div>
+            <img src="bonus4.png" alt="100 legendas" class="bonus-img">
           </div>
           <h4>Bônus 4: 100 legendas prontas</h4>
           <p>Copie e cole no Instagram. Frases prontas pra postar sem pensar.</p>
@@ -1606,7 +1649,10 @@
           <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Todos os +1200 cortes</li>
           <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Acesso vitalício</li>
           <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Atualizações para sempre</li>
-          <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>4 bônus especiais</li>
+          <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Bônus: Cortes mais pedidos 2026</li>
+          <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Bônus: Instagram Pack</li>
+          <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Bônus: Guia de Rostos</li>
+          <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Bônus: Atualizações Vitalícias</li>
           <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Suporte prioritário</li>
           <li><span class="li-check"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Garantia de 7 dias</li>
         </ul>
@@ -1681,6 +1727,78 @@
   <span class="pulse"></span>
   <span><b id="notifName">Lucas de São Paulo</b> acabou de comprar o Plano Completo</span>
 </div>
+
+<!-- 15. UPSELL MODAL -->
+<div class="modal-overlay" id="upsellModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h2 class="modal-title">Espere! Oferta Especial 🔥</h2>
+    <p class="modal-sub">Leve o <b>Plano Completo</b> com desconto exclusivo!</p>
+    
+    <div class="modal-price-box">
+      <span class="modal-price-old">R$147,00</span>
+      <span class="modal-price-new">R$18,99</span>
+    </div>
+
+    <div class="modal-list">
+      <div class="modal-item">
+        <span class="check">✅</span> +1.200 Referências Premium
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> Guia de Visagismo Masculino
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> 16 Categorias Organizadas
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> BÔNUS: Cortes mais pedidos 2026
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> BÔNUS: Instagram Pack
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> BÔNUS: Guia de Rostos
+      </div>
+      <div class="modal-item">
+        <span class="check">✅</span> BÔNUS: Atualizações Vitalícias
+      </div>
+    </div>
+
+    <a href="https://pay.lowify.com.br/go.php?offer=61mgyfe" class="modal-btn-upsell">QUERO O COMPLETO POR R$18,99</a>
+    <a href="#" class="modal-btn-basic" onclick="proceedToBasic(event)">Continuar com o Plano Básico</a>
+  </div>
+</div>
+
+<script>
+  // Logic to intercept basic plan click
+  document.addEventListener('DOMContentLoaded', () => {
+    const allCtas = document.querySelectorAll('.plan-cta');
+    if (allCtas.length >= 2) {
+      const basicBtn = allCtas[0];
+      basicBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    }
+  });
+
+  function openModal() {
+    document.getElementById('upsellModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('upsellModal').classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+
+  function proceedToBasic(e) {
+    e.preventDefault();
+    // Substituir pelo link real do checkout básico se houver
+    window.location.href = "#pricing"; 
+    closeModal();
+  }
+</script>
 
 <script>
   // Countdown
