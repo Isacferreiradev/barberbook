@@ -1728,7 +1728,6 @@
       width: 100%;
       max-width: 440px;
       max-height: 95vh;
-      /* Limite de altura */
       border-radius: 24px;
       padding: 24px;
       position: relative;
@@ -1736,56 +1735,27 @@
       text-align: center;
       display: flex;
       flex-direction: column;
+      transform-origin: center center;
     }
 
-    @media (max-height: 700px) {
+    @media (max-height: 750px) {
       .modal-content {
         padding: 16px;
-        border-radius: 20px;
-      }
-
-      .modal-title {
-        font-size: 18px;
-        margin-bottom: 4px;
-      }
-
-      .modal-sub {
-        font-size: 13px;
-        margin-bottom: 12px;
-      }
-
-      .modal-price-box {
-        padding: 12px;
-        margin-bottom: 12px;
-      }
-
-      .modal-price-new {
-        font-size: 24px;
-      }
-
-      .modal-list {
-        gap: 4px;
-        margin-bottom: 16px;
-      }
-
-      .modal-item {
-        font-size: 12px;
-      }
-
-      .modal-btn-upsell {
-        padding: 14px;
-        font-size: 14px;
-      }
-
-      .modal-btn-basic {
-        padding: 12px;
-        font-size: 13px;
+        transform: scale(0.95);
       }
     }
 
-    @media (max-height: 600px) {
+    @media (max-height: 680px) {
       .modal-content {
-        transform: scale(0.9);
+        transform: scale(0.85);
+      }
+      .modal-price-box { margin-bottom: 12px; }
+      .modal-list { margin-bottom: 16px; }
+    }
+
+    @media (max-height: 580px) {
+      .modal-content {
+        transform: scale(0.75);
       }
     }
 
@@ -2004,25 +1974,27 @@
       <!-- Faixa de Cortes -->
       <div class="hero-marquee reveal delay-4" style="margin-top:20px; margin-bottom: -40px;">
         <div class="marquee-track">
-          <img src="frontal.jpg" alt="Corte 1">
-          <img src="lateral.jpg" alt="Corte 2">
-          <img src="traseira.jpg" alt="Corte 3">
-          <img src="afaw.jpg" alt="Corte 4">
-          <img src="as.jpg" alt="Corte 5">
-          <img src="hcasw.jpg" alt="Corte 6">
-          <img src="hgw.jpg" alt="Corte 7">
-          <img src="wcaga.jpg" alt="Corte 8">
-          <img src="wda.jpg" alt="Corte 9">
+          <img src="02-Mid-Fade/V02-Mid-Fade-Slick-Back/frontal.jpg" alt="Mid Fade Slick Back">
+          <img src="02-Mid-Fade/V04-Mid-Fade-Cacheado-Medio/frontal.jpg" alt="Mid Fade Cacheado">
+          <img src="02-Mid-Fade/V05-Mid-Fade-Crespo-Alto/frontal.jpg" alt="Mid Fade Crespo">
+          <img src="02-Mid-Fade/V10-Mid-Fade-Franja-Cortina/frontal.jpg" alt="Mid Fade Franja">
+          <img src="02-Mid-Fade/V21-Mid-Fade-Edgar-Cut/frontal.jpg" alt="Mid Fade Edgar Cut">
+          <img src="03-Burst-Fade/V01-Burst-Fade-Mohawk/frontal.jpg" alt="Burst Fade Mohawk">
+          <img src="03-Burst-Fade/V03-Burst-Fade-Slick-Back/frontal.jpg" alt="Burst Fade Slick Back">
+          <img src="03-Burst-Fade/V06-Burst-Fade-Texturizado/frontal.jpg" alt="Burst Fade Texturizado">
+          <img src="03-Burst-Fade/V10-Burst-Fade-Crespo-Esponja/frontal.jpg" alt="Burst Fade Crespo">
+          <img src="03-Burst-Fade/V18-Burst-Fade-Edgar/frontal.jpg" alt="Burst Fade Edgar">
           <!-- Duplicate for loop -->
-          <img src="frontal.jpg" alt="Corte 1">
-          <img src="lateral.jpg" alt="Corte 2">
-          <img src="traseira.jpg" alt="Corte 3">
-          <img src="afaw.jpg" alt="Corte 4">
-          <img src="as.jpg" alt="Corte 5">
-          <img src="hcasw.jpg" alt="Corte 6">
-          <img src="hgw.jpg" alt="Corte 7">
-          <img src="wcaga.jpg" alt="Corte 8">
-          <img src="wda.jpg" alt="Corte 9">
+          <img src="02-Mid-Fade/V02-Mid-Fade-Slick-Back/frontal.jpg" alt="Mid Fade Slick Back">
+          <img src="02-Mid-Fade/V04-Mid-Fade-Cacheado-Medio/frontal.jpg" alt="Mid Fade Cacheado">
+          <img src="02-Mid-Fade/V05-Mid-Fade-Crespo-Alto/frontal.jpg" alt="Mid Fade Crespo">
+          <img src="02-Mid-Fade/V10-Mid-Fade-Franja-Cortina/frontal.jpg" alt="Mid Fade Franja">
+          <img src="02-Mid-Fade/V21-Mid-Fade-Edgar-Cut/frontal.jpg" alt="Mid Fade Edgar Cut">
+          <img src="03-Burst-Fade/V01-Burst-Fade-Mohawk/frontal.jpg" alt="Burst Fade Mohawk">
+          <img src="03-Burst-Fade/V03-Burst-Fade-Slick-Back/frontal.jpg" alt="Burst Fade Slick Back">
+          <img src="03-Burst-Fade/V06-Burst-Fade-Texturizado/frontal.jpg" alt="Burst Fade Texturizado">
+          <img src="03-Burst-Fade/V10-Burst-Fade-Crespo-Esponja/frontal.jpg" alt="Burst Fade Crespo">
+          <img src="03-Burst-Fade/V18-Burst-Fade-Edgar/frontal.jpg" alt="Burst Fade Edgar">
         </div>
       </div>
     </div>
@@ -2612,7 +2584,7 @@
                   <polyline points="20 6 9 17 4 12" />
                 </svg></span>Garantia de 7 dias</li>
           </ul>
-          <a href="#" class="plan-cta">
+          <a href="https://pay.lowify.com.br/checkout?product_id=R2pnV1" class="plan-cta">
             <span class="hand" aria-hidden="true">👉</span>
             Escolher Completo
           </a>
@@ -2760,8 +2732,8 @@
         </div>
       </div>
 
-      <a href="https://pay.lowify.com.br/go.php?offer=61mgyfe" class="modal-btn-upsell">QUERO O COMPLETO POR R$18,99</a>
-      <a href="#" class="modal-btn-basic" onclick="proceedToBasic(event)">Continuar com o Plano Básico</a>
+      <a href="https://pay.lowify.com.br/go.php?offer=z2u5knw" class="modal-btn-upsell">QUERO O COMPLETO POR R$18,99</a>
+      <a href="https://pay.lowify.com.br/checkout?product_id=SD6MRp" class="modal-btn-basic">Continuar com o Plano Básico</a>
     </div>
   </div>
 
@@ -2778,23 +2750,30 @@
       }
     });
 
+    let scrollPos = 0;
     function openModal() {
+      scrollPos = window.pageYOffset;
       document.getElementById('upsellModal').classList.add('show');
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPos}px`;
+      document.body.style.width = '100%';
       document.documentElement.style.overflow = 'hidden';
     }
 
     function closeModal() {
       document.getElementById('upsellModal').classList.remove('show');
-      document.body.style.overflow = 'auto';
-      document.documentElement.style.overflow = 'auto';
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('position');
+      document.body.style.removeProperty('top');
+      document.body.style.removeProperty('width');
+      document.documentElement.style.removeProperty('overflow');
+      window.scrollTo(0, scrollPos);
     }
 
     function proceedToBasic(e) {
       e.preventDefault();
-      // Substituir pelo link real do checkout básico se houver
-      window.location.href = "#pricing";
-      closeModal();
+      window.location.href = "https://pay.lowify.com.br/checkout?product_id=SD6MRp";
     }
   </script>
 
