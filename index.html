@@ -1125,11 +1125,12 @@
     background: rgba(0,0,0,0.85);
     backdrop-filter: blur(6px);
     display: none;
-    align-items: center; /* Centraliza novamente */
+    align-items: center;
     justify-content: center;
     z-index: 2000;
     padding: 10px;
-    overflow: hidden; /* Remove o scroll do overlay */
+    overflow: hidden;
+    touch-action: none; /* Impede o arrasto do fundo em mobile */
   }
   .modal-overlay.show { display: flex; }
   .modal-content {
@@ -1860,11 +1861,13 @@
   function openModal() {
     document.getElementById('upsellModal').classList.add('show');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeModal() {
     document.getElementById('upsellModal').classList.remove('show');
     document.body.style.overflow = 'auto';
+    document.documentElement.style.overflow = 'auto';
   }
 
   function proceedToBasic(e) {
