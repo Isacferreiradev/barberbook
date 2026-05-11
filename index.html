@@ -1125,22 +1125,39 @@
     background: rgba(0,0,0,0.85);
     backdrop-filter: blur(6px);
     display: none;
-    align-items: flex-start; /* Permite scroll do topo */
+    align-items: center; /* Centraliza novamente */
     justify-content: center;
     z-index: 2000;
-    padding: 40px 20px;
-    overflow-y: auto; /* Habilita scroll se o modal for alto */
+    padding: 10px;
+    overflow: hidden; /* Remove o scroll do overlay */
   }
   .modal-overlay.show { display: flex; }
   .modal-content {
     background: #fff;
     width: 100%;
     max-width: 440px;
+    max-height: 95vh; /* Limite de altura */
     border-radius: 24px;
-    padding: 32px 24px;
+    padding: 24px;
     position: relative;
     animation: modalPop 0.4s cubic-bezier(0.17, 0.89, 0.32, 1.28);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (max-height: 700px) {
+    .modal-content { padding: 16px; border-radius: 20px; }
+    .modal-title { font-size: 18px; margin-bottom: 4px; }
+    .modal-sub { font-size: 13px; margin-bottom: 12px; }
+    .modal-price-box { padding: 12px; margin-bottom: 12px; }
+    .modal-price-new { font-size: 24px; }
+    .modal-list { gap: 4px; margin-bottom: 16px; }
+    .modal-item { font-size: 12px; }
+    .modal-btn-upsell { padding: 14px; font-size: 14px; }
+    .modal-btn-basic { padding: 12px; font-size: 13px; }
+  }
+  @media (max-height: 600px) {
+    .modal-content { transform: scale(0.9); }
   }
   @keyframes modalPop {
     from { opacity: 0; transform: scale(0.8) translateY(20px); }
