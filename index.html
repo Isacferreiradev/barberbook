@@ -9,8 +9,10 @@
   <title>Barber Vault — +1200 Referências Premium para Barbeiros</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Performance: Preload Hero Image -->
+  <link rel="preload" href="mockup.png" as="image" fetchpriority="high">
 
   <!-- Meta Pixel Code -->
   <script>
@@ -76,6 +78,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-display: swap;
     }
 
     html {
@@ -1928,7 +1931,7 @@
         mostrar no celular, elevar o nível do seu atendimento e lucrar mais hoje mesmo.</p>
 
       <div class="mockup-frame reveal delay-2">
-        <img src="mockup.png" alt="Barber Vault Mockup" class="hero-mockup-img">
+        <img src="mockup.png" alt="Barber Vault Mockup" class="hero-mockup-img" fetchpriority="high" width="800" height="600">
       </div>
 
       <div class="social-proof reveal delay-2">
@@ -1974,27 +1977,27 @@
       <!-- Faixa de Cortes -->
       <div class="hero-marquee reveal delay-4" style="margin-top:20px; margin-bottom: -40px;">
         <div class="marquee-track">
-          <img src="img-faixa/corte1.jpg" alt="Corte 1">
-          <img src="img-faixa/corte2.jpg" alt="Corte 2">
-          <img src="img-faixa/corte3.jpg" alt="Corte 3">
-          <img src="img-faixa/corte4.jpg" alt="Corte 4">
-          <img src="img-faixa/corte5.jpg" alt="Corte 5">
-          <img src="img-faixa/corte6.jpg" alt="Corte 6">
-          <img src="img-faixa/corte7.jpg" alt="Corte 7">
-          <img src="img-faixa/corte8.jpg" alt="Corte 8">
-          <img src="img-faixa/corte9.jpg" alt="Corte 9">
-          <img src="img-faixa/corte10.jpg" alt="Corte 10">
+          <img src="img-faixa/corte1.jpg" alt="Corte 1" fetchpriority="high" width="200" height="250">
+          <img src="img-faixa/corte2.jpg" alt="Corte 2" fetchpriority="high" width="200" height="250">
+          <img src="img-faixa/corte3.jpg" alt="Corte 3" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte4.jpg" alt="Corte 4" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte5.jpg" alt="Corte 5" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte6.jpg" alt="Corte 6" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte7.jpg" alt="Corte 7" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte8.jpg" alt="Corte 8" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte9.jpg" alt="Corte 9" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte10.jpg" alt="Corte 10" loading="lazy" width="200" height="250">
           <!-- Duplicate for loop -->
-          <img src="img-faixa/corte1.jpg" alt="Corte 1">
-          <img src="img-faixa/corte2.jpg" alt="Corte 2">
-          <img src="img-faixa/corte3.jpg" alt="Corte 3">
-          <img src="img-faixa/corte4.jpg" alt="Corte 4">
-          <img src="img-faixa/corte5.jpg" alt="Corte 5">
-          <img src="img-faixa/corte6.jpg" alt="Corte 6">
-          <img src="img-faixa/corte7.jpg" alt="Corte 7">
-          <img src="img-faixa/corte8.jpg" alt="Corte 8">
-          <img src="img-faixa/corte9.jpg" alt="Corte 9">
-          <img src="img-faixa/corte10.jpg" alt="Corte 10">
+          <img src="img-faixa/corte1.jpg" alt="Corte 1" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte2.jpg" alt="Corte 2" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte3.jpg" alt="Corte 3" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte4.jpg" alt="Corte 4" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte5.jpg" alt="Corte 5" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte6.jpg" alt="Corte 6" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte7.jpg" alt="Corte 7" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte8.jpg" alt="Corte 8" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte9.jpg" alt="Corte 9" loading="lazy" width="200" height="250">
+          <img src="img-faixa/corte10.jpg" alt="Corte 10" loading="lazy" width="200" height="250">
         </div>
       </div>
     </div>
@@ -2292,7 +2295,7 @@
           <div class="bonus-card">
             <div class="bonus-thumb">
               <span class="free-stamp">Grátis</span>
-              <img src="bonus1.png" alt="Cortes mais pedidos" class="bonus-img">
+              <img src="bonus1.png" alt="Cortes mais pedidos" class="bonus-img" loading="lazy" width="400" height="300">
             </div>
             <h4>Bônus 1: Cortes mais pedidos</h4>
             <p>Os 25 estilos que mais estão saindo em 2026 com dicas de execução.</p>
@@ -2301,7 +2304,7 @@
           <div class="bonus-card">
             <div class="bonus-thumb">
               <span class="free-stamp">Grátis</span>
-              <img src="bonus2.png" alt="Instagram Pack" class="bonus-img">
+              <img src="bonus2.png" alt="Instagram Pack" class="bonus-img" loading="lazy" width="400" height="300">
             </div>
             <h4>Bônus 2: Ideias de fotos pra Instagram</h4>
             <p>Como fotografar e postar seus cortes pra bombar no perfil.</p>
@@ -2310,7 +2313,7 @@
           <div class="bonus-card">
             <div class="bonus-thumb">
               <span class="free-stamp">Grátis</span>
-              <img src="bonus3.png" alt="Guia de Rostos" class="bonus-img">
+              <img src="bonus3.png" alt="Guia de Rostos" class="bonus-img" loading="lazy" width="400" height="300">
             </div>
             <h4>Bônus 3: Guia por formato de rosto</h4>
             <p>Saiba qual corte indicar pra cada tipo de rosto. Atendimento de profissional.</p>
@@ -2319,7 +2322,7 @@
           <div class="bonus-card">
             <div class="bonus-thumb">
               <span class="free-stamp">Grátis</span>
-              <img src="bonus4.png" alt="100 legendas" class="bonus-img">
+              <img src="bonus4.png" alt="100 legendas" class="bonus-img" loading="lazy" width="400" height="300">
             </div>
             <h4>Bônus 4: 100 legendas prontas</h4>
             <p>Copie e cole no Instagram. Frases prontas pra postar sem pensar.</p>
